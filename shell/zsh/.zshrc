@@ -27,3 +27,13 @@ prompt ${DOTLY_THEME:-codely}
 source "$DOTLY_PATH/shell/zsh/bindings/dot.zsh"
 source "$DOTLY_PATH/shell/zsh/bindings/reverse_search.zsh"
 source "$DOTFILES_PATH/shell/zsh/key-bindings.zsh"
+
+
+autoload -Uz promptinit && promptinit
+prompt ${DOTLY_THEME:-codely}
+
+source $(brew --prefix nvm)/nvm.sh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/jordi.pulido/.sdkman"
+[[ -s "/Users/jordi.pulido/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jordi.pulido/.sdkman/bin/sdkman-init.sh"

@@ -12,6 +12,7 @@ export CODELY_THEME_PWD_MODE="short" # full, short, home_relative
 export JAVA_HOME='/Library/Java/JavaVirtualMachines/amazon-corretto-15.jdk/Contents/Home'
 export GEM_HOME="$HOME/.gem"
 export GOPATH="$HOME/.go"
+export NVM_DIR="$HOME/.nvm"
 
 # ------------------------------------------------------------------------------
 # Apps
@@ -23,6 +24,7 @@ else
 fi
 
 export FZF_DEFAULT_OPTS="--color=$fzf_colors --reverse"
+export EDITOR=vim
 
 # ------------------------------------------------------------------------------
 # Path - The higher it is, the more priority it has
