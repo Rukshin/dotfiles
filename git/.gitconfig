@@ -1,7 +1,7 @@
 [user]
 	name = Jordi Pulido
-	email = jordi.pulido@code.seat
-	signingkey = 241D882B
+	email = jpulidofontalba@gmail.com
+	signingkey = 96C9A5627833E6DC
 
 [fetch]
 	prune = true

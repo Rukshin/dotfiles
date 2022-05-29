@@ -17,3 +17,6 @@
     ~/.zshenv: shell/zsh/.zshenv
     ~/.zshrc: shell/zsh/.zshrc
     ~/.inputrc: shell/.inputrc
+    ~/.gitconfig: git/.gitconfig
+    ~/.gitattributes: git/.gitattributes
+    ~/.gitignore_global: git/.gitignore_global
