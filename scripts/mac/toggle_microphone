@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Mute and unmute microphone
+#?? 1.0.0
+##?
+##? Usage:
+##?   toggle_microphone
+##?
+##? Options:
+##?   -h --help  Show this screen.
+docs::parse "$@"
+
+osascript -e "
+if input volume of (get volume settings) = 0 then
+	tell application \"System Events\"
+    set volume input volume 90
+	  display notification \"On\" with title \"Mic\"
+  end tell
+else
+	tell application \"System Events\"
+    set volume input volume 0
+    display notification \"Off\" with title \"Mic\"
+  end tell
+end if
+"

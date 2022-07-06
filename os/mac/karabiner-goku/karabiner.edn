@@ -1,0 +1,111 @@
+{:profiles
+ {:Default
+  {:default            true
+   :alone              500
+   :delay              150
+   :held               500
+   :sim                50
+   }
+ }
+:simlayer-threshold 500
+:applications
+ {;; To obtain the app ID: `grep -A1 "CFBundleIdentifier" /Applications/The.app/Contents/Info.plist`
+  :Chrome   ["com.google.Chrome"]
+  :Contexts ["com.contextsformac.Contexts"]
+  :Finder   ["com.apple.finder"]
+  :IntelliJ ["com.jetbrains.intellij"]
+  :Notion   ["notion.id"]
+  :Slack    ["com.tinyspeck.slackmacgap"]}
+ :froms     {:line-delete              {:modi :left_command :key :delete_or_backspace}
+             :clipboard-history        {:modi [:left_command :left_shift] :key :v}
+             :line-duplicate           {:modi :left_command :key :d}
+             :move-next-screen         {:modi [:left_command :left_shift :left_option] :key :right_arrow}
+             :move-prev-screen         {:modi [:left_command :left_shift :left_option] :key :left_arrow}
+             :selection-extend         {:modi :left_option :key :up_arrow}
+             :selection-shrink         {:modi :left_option :key :down_arrow}
+             :show-recent              {:modi :left_command :key :e}
+             :sidebar-primary-toggle   {:modi :left_command :key :1}
+             :sidebar-secondary-toggle {:modi :left_command :key :2}
+             :switch-account           {:modi :left_command :key :caps_lock}
+             :switch-account-esc       {:modi :left_command :key :escape}
+             :zoom-in                  {:modi :left_command :key :equal_sign}
+             :zoom-out                 {:modi :left_command :key :hyphen}}
+ :simlayers {:open-mode {:key :o}}
+ :templates {
+             :paste            "$HOME/.dotfiles/bin/sdot mac paste_text \"%s\""
+             :paste-and-return "$HOME/.dotfiles/bin/sdot mac paste_text \"%s\" --returning"
+             :open-in-chrome   "$HOME/.dotfiles/bin/sdot mac open_chrome_url \"%s\""
+             :open-app         "osascript -e 'tell application \"%s\" to activate'"
+             }
+ :main
+ [;; ------------ Launchers ------------
+
+  {:des "[launch] iTerm" :rules [[:!CTOspacebar [:open-app "iTerm"]]]}
+  {:des "[launch] Slack" :rules [[:!CTOs [:open-app "Slack"]]]}
+  {:des "[launch] Notion" :rules [[:!CTOn [:open-app "Notion"]]]}
+  {:des "[launch] Chrome" :rules [[:!CTOc [:open-app "Google Chrome"]]]}
+
+  {:des   "[script] Generate uuid"
+   :rules [[:!CTOu "$HOME/.dotfiles/bin/sdot utils uuid_code"]]}
+
+  ;; ------------ Utils ------------
+
+  {:des   "[util] Extend selection"
+   :rules [[:selection-extend [:!Oleft_arrow :!OSright_arrow] [:!IntelliJ :!Notion]]]}
+  {:des   "[util] Delete line"
+   :rules [[:line-delete
+            [:!Cright_arrow :!Cdelete_or_backspace :delete_or_backspace]
+            [:!IntelliJ :!Notion :!Finder :!Contexts]]]}
+  {:des   "[util] Toggle microphone"
+   :rules [[:!CTOm "$HOME/.dotfiles/bin/sdot mac toggle_microphone"]]}
+  ;; ------------ Application specific ------------
+  {:des "[chrome] Show recent tabs" :rules [:Chrome [:show-recent :!CSa]]}
+  {:des   "[chrome] Switch profile"
+   :rules [:Chrome [:switch-account [:!CSm :return_or_enter]]]}
+
+  {:des   "[slack] Toggle sidebars"
+   :rules [:Slack [:sidebar-primary-toggle :!CSd] [:sidebar-secondary-toggle :!Cperiod]]}
+  {:des   "[slack] Reactions"
+   :rules [:Slack
+           [:!COv [:paste-and-return "+:white_check_mark:"]]
+           [:!COs [:paste-and-return "+:thumbsup:"]]
+           [:!COd [:paste-and-return "+:thumbsdown:"]]
+           [:!COp [:paste-and-return "+:heavy_plus_sign:"]]
+           [:!COg [:paste-and-return "+:grimacing:"]]
+           [:!COl [:paste-and-return "+:joy:"]]]}
+
+  {:des "[notion] Show recent pages" :rules [:Notion [:show-recent :!Cp]]}
+  {:des   "[notion] Toggle sidebar"
+   :rules [:Notion [:sidebar-primary-toggle :!Cbackslash]]}
+  {:des   "[notion] Extend selection"
+   :rules [:Notion [:selection-extend :!Sup_arrow] [:selection-shrink :!Sdown_arrow]]}
+
+  ;; ------------ Remaps ------------
+  {:des   "[mouse] Up key -> Restore last hidden"
+   :rules [[{:pkey :button5} :!Ctab]]}
+  {:des   "[mouse] Down key -> Hide"
+   :rules [[{:pkey :button4} [{:pkey :button1} :!Ch]]]}
+
+  ]
+ ;; ------------ Cheatsheet ------------
+ ;; !  stand for mandatory
+ ;; #  stand for optional
+ ;; !! stand for mandatory command + control + optional + shift (hyper)
+ ;; ## stand for optional any
+ ;; C T O S for left command control option shift
+ ;; Q W E R for right command control option shift
+ ;; F for fn
+ ;; need to prefix C T O S F Q W E R with ! or #
+ :cheatsheet
+ {:!Ca        "command a"
+  :!Ta        "control a"
+  :!Oa        "option a"
+  :!Sa        "shift a"
+  :#Sa        "shift a"
+  :!CTOa      "command control option a"
+  :!Cspacebar "command space"
+  :!Fa        "fn a"
+  :##a        "keycode a optional any"
+  :!!a        "mandatory hyper (control command option shift) a "
+  :template   {:des   "Description of your action"
+               :rules [[:!Cspacebar "command to execute"]]}}}

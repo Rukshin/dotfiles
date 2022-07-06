@@ -12,5 +12,5 @@
 # Documentation:
 # @raycast.description Generates a UUID and copies it to the clipboard.
 
-uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy
+$HOME/.dotfiles/bin/sdot utils uuid_code
 echo "UUID Generated"
