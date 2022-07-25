@@ -1,3 +1,6 @@
+# Karabiner
+/os/mac/karabiner-elements/automatic_backups/*
+
 # Private Stuff
 /**/**/private-*
 /scripts/private
