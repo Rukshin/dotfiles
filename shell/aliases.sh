@@ -8,7 +8,6 @@ alias la="exa -la --icons"
 alias ~="cd ~"
 alias dotfiles='cd $DOTFILES_PATH'
 alias mines="cd ~/Code/mines"
-alias code="cd ~/Code/"
 
 # Git
 alias gaa="git add -A"

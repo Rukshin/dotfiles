@@ -29,6 +29,7 @@ fi
 
 export FZF_DEFAULT_OPTS="--color=$fzf_colors --reverse"
 export EDITOR=vim
+export KUBECONFIG="${KUBECONFIG}:${HOME}/.kube/config"
 
 # ------------------------------------------------------------------------------
 # Path - The higher it is, the more priority it has
@@ -41,6 +42,7 @@ export path=(
   "$GEM_HOME/bin"
   "$GOPATH/bin"
   "$HOME/.cargo/bin"
+  "$HOME/.krew/bin"
   "/usr/local/opt/ruby/bin"
   "/usr/local/opt/python/libexec/bin"
   "/opt/homebrew/bin"
