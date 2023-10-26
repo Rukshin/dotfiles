@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Stop and remove every container.
+#?? 1.0.0
+##?
+##? Usage:
+##?   remove_containers
+docs::parse "$@"
+
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)

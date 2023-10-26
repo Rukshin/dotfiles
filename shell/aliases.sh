@@ -3,8 +3,8 @@ alias sudo='sudo '
 
 alias ..="cd .."
 alias ...="cd ../.."
-alias ll="exa -l --icons"
-alias la="exa -la --icons"
+alias ll="eza -l --icons"
+alias la="eza -la --icons"
 alias ~="cd ~"
 alias dotfiles='cd $DOTFILES_PATH'
 alias mines="cd ~/Code/mines"
@@ -32,3 +32,4 @@ alias i.='(idea $PWD &>/dev/null &)'
 alias c.='(code $PWD &>/dev/null &)'
 alias o.='open .'
 alias up='dot package update_all'
+alias removecontainers='dot docker remove_containers'

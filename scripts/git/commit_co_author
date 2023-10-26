@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Add all files and then commit
+#?? 1.0.0
+##?
+##? Usage:
+##?   commit_co_author
+##?   commit_co_author <message>
+docs::parse "$@"
+
+git add -A
+
+if [ -z "$message" ]; then
+  git commit -m "WIP
+
+
+Co-authored-by: Xavier Ejarque <xavier.ejarque@adevinta.com>"
+else
+  git commit -m"$1
+
+
+Co-authored-by: Xavier Ejarque <xavier.ejarque@adevinta.com>"
+fi

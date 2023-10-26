@@ -44,6 +44,7 @@
   {:des "[launch] Slack" :rules [[:!CTOs [:open-app "Slack"]]]}
   {:des "[launch] Notion" :rules [[:!CTOn [:open-app "Notion"]]]}
   {:des "[launch] Chrome" :rules [[:!CTOc [:open-app "Google Chrome"]]]}
+  {:des "[launch] IntelliJ" :rules [[:!CTOi [:open-app "IntelliJ IDEA Ultimate"]]]}
 
   {:des   "[script] Generate uuid"
    :rules [[:!CTOu "$HOME/.dotfiles/bin/sdot utils uuid_code"]]}

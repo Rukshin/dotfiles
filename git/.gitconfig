@@ -1,13 +1,14 @@
 [user]
 	name = Jordi Pulido
-	email = jpulidofontalba@gmail.com
-	signingkey = F5AAF2F5241D882B
+	email = jordi.pulido@adevinta.com
+	signingkey = 6F4A2F3C91E7551C
 
 [fetch]
 	prune = true
 
 [push]
 	default = simple
+	autoSetupRemote = true
 
 [color]
 	diff = auto
@@ -100,3 +101,12 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[protocol]
+	version = 2
+[gitreview]
+	remote = origin
+	notopic = true
+[url "git@github.mpi-internal.com:"]
+	insteadOf = https://github.mpi-internal.com
+[url "ssh://jordi.pulido@review.leboncoin.ci:29418/"]
+	insteadOf = https://review.leboncoin.ci/
