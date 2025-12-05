@@ -1,7 +1,16 @@
 [user]
 	name = Jordi Pulido
-	email = jordi.pulido@adevinta.com
-	signingkey = 6F4A2F3C91E7551C
+	email = jpulidofontalba@gmail.com
+
+[includeIf "gitdir:~/Code/mine"]
+	path = $DOTFILES_PATH/git/.gitconfig-mine
+
+# Personal dotfiles
+[includeIf "gitdir:~/.dotfiles/"]
+	path = $DOTFILES_PATH/git/.gitconfig-mine
+
+[includeIf "gitdir:~/Code/Adevinta"]
+	path = $DOTFILES_PATH/modules/private/git/.gitconfig-adevinta
 
 [fetch]
 	prune = true
@@ -79,14 +88,7 @@
 	untracked = cyan
 
 [apply]
-	# Detect whitespace errors when applying a patch
 	whitespace = fix
-[commit]
-	gpgsign = true
-[tag]
-	gpgsign = true
-[gpg]
-	program = /usr/local/bin/gpg
 [pull]
 	rebase = true
 [rebase]
@@ -108,5 +110,3 @@
 	notopic = true
 [url "git@github.mpi-internal.com:"]
 	insteadOf = https://github.mpi-internal.com
-[url "ssh://jordi.pulido@review.leboncoin.ci:29418/"]
-	insteadOf = https://review.leboncoin.ci/

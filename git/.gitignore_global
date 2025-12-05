@@ -55,3 +55,7 @@ desktop.ini
 .iml
 *.iml
 *.sublime-workspace
+
+
+# ClaudeAI files #
+.claude/settings.local.json

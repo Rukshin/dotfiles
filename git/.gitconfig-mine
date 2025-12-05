@@ -1,0 +1,10 @@
+[user]
+    name = Your Name
+    email = jpulidofontalba@gmail.com
+    signingkey = 6F4A2F3C91E7551C
+
+[commit]
+    gpgsign = true
+
+[gpg]
+    program = gpg

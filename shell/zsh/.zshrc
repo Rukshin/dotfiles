@@ -37,3 +37,6 @@ source $(brew --prefix nvm)/nvm.sh
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/jordi.pulido/.sdkman"
 [[ -s "/Users/jordi.pulido/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jordi.pulido/.sdkman/bin/sdkman-init.sh"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jordi.pulido/.lmstudio/bin"

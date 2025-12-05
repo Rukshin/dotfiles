@@ -48,3 +48,6 @@ if [ -n "$(ls -A "$DOTFILES_PATH/shell/bash/completions/")" ]; then
     source "$bash_file"
   done
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jordi.pulido/.lmstudio/bin"
