@@ -2,15 +2,15 @@
 	name = Jordi Pulido
 	email = jpulidofontalba@gmail.com
 
-[includeIf "gitdir:~/Code/mine"]
-	path = $DOTFILES_PATH/git/.gitconfig-mine
+[includeIf "gitdir:/Users/jordi.pulido/Code/mine/"]
+	path = /Users/jordi.pulido/.dotfiles/git/.gitconfig-mine
 
 # Personal dotfiles
-[includeIf "gitdir:~/.dotfiles/"]
-	path = $DOTFILES_PATH/git/.gitconfig-mine
+[includeIf "gitdir:/Users/jordi.pulido/.dotfiles/"]
+	path = /Users/jordi.pulido/.dotfiles/git/.gitconfig-mine
 
-[includeIf "gitdir:~/Code/Adevinta"]
-	path = $DOTFILES_PATH/modules/private/git/.gitconfig-adevinta
+[includeIf "gitdir:/Users/jordi.pulido/Code/Adevinta/"]
+	path = /Users/jordi.pulido/.dotfiles/modules/private/git/.gitconfig-adevinta
 
 [fetch]
 	prune = true

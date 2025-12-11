@@ -1,7 +1,7 @@
 [user]
-    name = Your Name
+    name = Jordi Pulido
     email = jpulidofontalba@gmail.com
-    signingkey = 6F4A2F3C91E7551C
+    signingkey = AFCB0B62D2C4359C
 
 [commit]
     gpgsign = true
