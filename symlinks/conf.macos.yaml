@@ -18,4 +18,5 @@
     ~/bin/make: /opt/homebrew/bin/gmake
     ~/bin/sed: /opt/homebrew/bin/gsed
     ~/bin/touch: /opt/homebrew/bin/gtouch
-    ~/bin/zsh: /opt/homebrew/bin/zsh
+    ~/bin/zsh: /opt/homebrew/bin/
+    ~/.claude/commands: modules/private/.claude/commands
