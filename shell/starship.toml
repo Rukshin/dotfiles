@@ -1,0 +1,149 @@
+# Starship Configuration
+# Replaces Codely theme with modern, fast prompt
+
+# Single-line format with clean design
+format = """
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$python\
+$java\
+$kotlin\
+$golang\
+$rust\
+$docker_context\
+$kubernetes\
+$cmd_duration\
+$line_break\
+$character"""
+
+# Prompt character
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+
+# Directory configuration - matches CODELY_THEME_PWD_MODE="short"
+[directory]
+style = "bold cyan"
+truncation_length = 3
+truncate_to_repo = true
+truncation_symbol = "…/"
+format = "[$path]($style)[$read_only]($read_only_style) "
+read_only = " 🔒"
+read_only_style = "red"
+
+# Git branch
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "[$symbol$branch]($style) "
+truncation_length = 20
+truncation_symbol = "…"
+
+# Git status - show when there are changes
+[git_status]
+style = "bold yellow"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+disabled = false
+
+# Show command duration for slow commands
+[cmd_duration]
+min_time = 2000
+format = "took [$duration](bold yellow) "
+show_milliseconds = false
+
+# Node.js
+[nodejs]
+symbol = " "
+style = "bold green"
+format = "[$symbol($version )]($style)"
+detect_extensions = ["js", "mjs", "cjs", "ts"]
+detect_files = ["package.json", ".node-version", ".nvmrc"]
+
+# Python
+[python]
+symbol = " "
+style = "bold yellow"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+detect_extensions = ["py"]
+detect_files = [".python-version", "Pipfile", "requirements.txt", "pyproject.toml"]
+
+# Java - includes detection for Kotlin/Java mixed projects
+[java]
+symbol = " "
+style = "bold red"
+format = "[$symbol($version )]($style)"
+detect_extensions = ["java", "class", "jar", "gradle", "kt", "kts"]
+detect_files = ["pom.xml", "build.gradle.kts", "build.gradle", "build.sbt", ".java-version", "gradlew"]
+
+# Kotlin - shown alongside Java in mixed projects
+[kotlin]
+symbol = "🅺 "
+style = "bold blue"
+format = "[$symbol($version )]($style)"
+detect_extensions = ["kt", "kts"]
+detect_files = ["build.gradle.kts"]
+kotlin_binary = "kotlin"
+
+# Go
+[golang]
+symbol = " "
+style = "bold cyan"
+format = "[$symbol($version )]($style)"
+detect_extensions = ["go"]
+detect_files = ["go.mod", "go.sum", "glide.yaml", "Gopkg.yml", "Gopkg.lock"]
+
+# Rust
+[rust]
+symbol = " "
+style = "bold red"
+format = "[$symbol($version )]($style)"
+detect_extensions = ["rs"]
+detect_files = ["Cargo.toml"]
+
+# Docker context
+[docker_context]
+symbol = " "
+style = "bold blue"
+format = "[$symbol$context]($style) "
+only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+
+# Kubernetes context
+[kubernetes]
+symbol = "☸ "
+style = "bold blue"
+format = '[$symbol$context( \($namespace\))]($style) '
+disabled = false
+detect_files = ["k8s", "kubernetes"]
+detect_extensions = ["yaml", "yml"]
+[kubernetes.context_aliases]
+"gke_.*_(?P<cluster>[\\w-]+)" = "gke-$cluster"
+
+# Disable modules we don't need
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[package]
+disabled = true
+
+[battery]
+disabled = true
+
+[time]
+disabled = true

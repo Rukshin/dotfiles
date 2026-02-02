@@ -17,6 +17,7 @@
     ~/.zshenv: shell/zsh/.zshenv
     ~/.zshrc: shell/zsh/.zshrc
     ~/.inputrc: shell/.inputrc
+    ~/.config/starship.toml: shell/starship.toml
     ~/.gitconfig: git/.gitconfig
     ~/.gitattributes: git/.gitattributes
     ~/.gitignore_global: git/.gitignore_global

@@ -19,18 +19,14 @@ ZSH_HIGHLIGHT_MAXLENGTH=300
 
 source "$DOTFILES_PATH/shell/init.sh"
 
-fpath=("$DOTFILES_PATH/shell/zsh/themes" "$DOTFILES_PATH/shell/zsh/completions" "$DOTLY_PATH/shell/zsh/themes" "$DOTLY_PATH/shell/zsh/completions" $fpath)
+# Initialize Starship prompt
+eval "$(starship init zsh)"
 
-autoload -Uz promptinit && promptinit
-prompt ${DOTLY_THEME:-codely}
+fpath=("$DOTFILES_PATH/shell/zsh/themes" "$DOTFILES_PATH/shell/zsh/completions" "$DOTLY_PATH/shell/zsh/themes" "$DOTLY_PATH/shell/zsh/completions" $fpath)
 
 source "$DOTLY_PATH/shell/zsh/bindings/dot.zsh"
 source "$DOTLY_PATH/shell/zsh/bindings/reverse_search.zsh"
 source "$DOTFILES_PATH/shell/zsh/key-bindings.zsh"
-
-
-autoload -Uz promptinit && promptinit
-prompt ${DOTLY_THEME:-codely}
 
 source $(brew --prefix nvm)/nvm.sh
 
