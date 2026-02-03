@@ -36,7 +36,7 @@ read_only_style = "red"
 
 # Git branch
 [git_branch]
-symbol = " "
+symbol = " "
 style = "bold purple"
 format = "[$symbol$branch]($style) "
 truncation_length = 20
@@ -51,7 +51,7 @@ ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 untracked = "?"
-stashed = "$"
+stashed = "\\$"
 modified = "!"
 staged = "+"
 renamed = "»"
@@ -66,7 +66,7 @@ show_milliseconds = false
 
 # Node.js
 [nodejs]
-symbol = " "
+symbol = " "
 style = "bold green"
 format = "[$symbol($version )]($style)"
 detect_extensions = ["js", "mjs", "cjs", "ts"]
@@ -74,7 +74,7 @@ detect_files = ["package.json", ".node-version", ".nvmrc"]
 
 # Python
 [python]
-symbol = " "
+symbol = " "
 style = "bold yellow"
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 detect_extensions = ["py"]
@@ -82,7 +82,7 @@ detect_files = [".python-version", "Pipfile", "requirements.txt", "pyproject.tom
 
 # Java - includes detection for Kotlin/Java mixed projects
 [java]
-symbol = " "
+symbol = " "
 style = "bold red"
 format = "[$symbol($version )]($style)"
 detect_extensions = ["java", "class", "jar", "gradle", "kt", "kts"]
@@ -90,7 +90,7 @@ detect_files = ["pom.xml", "build.gradle.kts", "build.gradle", "build.sbt", ".ja
 
 # Kotlin - shown alongside Java in mixed projects
 [kotlin]
-symbol = "🅺 "
+symbol = " "
 style = "bold blue"
 format = "[$symbol($version )]($style)"
 detect_extensions = ["kt", "kts"]
@@ -99,7 +99,7 @@ kotlin_binary = "kotlin"
 
 # Go
 [golang]
-symbol = " "
+symbol = " "
 style = "bold cyan"
 format = "[$symbol($version )]($style)"
 detect_extensions = ["go"]
@@ -107,7 +107,7 @@ detect_files = ["go.mod", "go.sum", "glide.yaml", "Gopkg.yml", "Gopkg.lock"]
 
 # Rust
 [rust]
-symbol = " "
+symbol = "󱘗 "
 style = "bold red"
 format = "[$symbol($version )]($style)"
 detect_extensions = ["rs"]
@@ -115,7 +115,7 @@ detect_files = ["Cargo.toml"]
 
 # Docker context
 [docker_context]
-symbol = " "
+symbol = " "
 style = "bold blue"
 format = "[$symbol$context]($style) "
 only_with_files = true

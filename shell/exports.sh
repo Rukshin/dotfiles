@@ -50,7 +50,7 @@ export path=(
   "$HOME/.cargo/bin"
   "$HOME/.krew/bin"
   "$HOME/Library/Python/3.10/bin/"
-  "$HOME/.local /bin"
+  "$HOME/.local/bin"
   "/usr/local/opt/ruby/bin"
   "/usr/local/opt/python/libexec/bin"
   "/opt/homebrew/bin"

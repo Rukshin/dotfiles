@@ -7,7 +7,7 @@ alias ll="eza -l --icons"
 alias la="eza -la --icons"
 alias ~="cd ~"
 alias dotfiles='cd $DOTFILES_PATH'
-alias mines="cd ~/Code/mines"
+alias mines="cd ~/Code/mine"
 
 # Git
 alias gaa="git add -A"
