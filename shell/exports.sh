@@ -44,6 +44,8 @@ export path=(
   "$HOME/bin"
   "$DOTLY_PATH/bin"
   "$DOTFILES_PATH/bin"
+  "$HOME/.lmstudio/bin"
+  "/Applications/Obsidian.app/Contents/MacOS"
   "$JAVA_HOME/bin"
   "$GEM_HOME/bin"
   "$GOPATH/bin"

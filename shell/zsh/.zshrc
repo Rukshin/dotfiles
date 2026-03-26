@@ -30,9 +30,10 @@ source "$DOTFILES_PATH/shell/zsh/key-bindings.zsh"
 
 source $(brew --prefix nvm)/nvm.sh
 
+# peon-ping quick controls
+alias peon="bash /Users/jordi.pulido/.claude/hooks/peon-ping/peon.sh"
+[ -f /Users/jordi.pulido/.claude/hooks/peon-ping/completions.bash ] && source /Users/jordi.pulido/.claude/hooks/peon-ping/completions.bash
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/jordi.pulido/.sdkman"
 [[ -s "/Users/jordi.pulido/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jordi.pulido/.sdkman/bin/sdkman-init.sh"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/jordi.pulido/.lmstudio/bin"
