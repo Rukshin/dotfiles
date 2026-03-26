@@ -25,3 +25,7 @@ fi
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/jordi.pulido/.lmstudio/bin"
+
+# peon-ping quick controls
+alias peon="bash /Users/jordi.pulido/.claude/hooks/peon-ping/peon.sh"
+[ -f /Users/jordi.pulido/.claude/hooks/peon-ping/completions.bash ] && source /Users/jordi.pulido/.claude/hooks/peon-ping/completions.bash
