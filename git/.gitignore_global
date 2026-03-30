@@ -60,3 +60,4 @@ desktop.ini
 # ClaudeAI files #
 .claude/settings.local.json
 .playwright-cli/
+.firecrawl/
