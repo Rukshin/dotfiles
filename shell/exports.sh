@@ -17,6 +17,7 @@ export JAVA_HOME='/Library/Java/JavaVirtualMachines/amazon-corretto-15.jdk/Conte
 export GEM_HOME="$HOME/.gem"
 export GOPATH="$HOME/.go"
 export NVM_DIR="$HOME/.nvm"
+export PNPM_HOME="$HOME/Library/pnpm"
 
 # ------------------------------------------------------------------------------
 # Apps
@@ -52,6 +53,7 @@ export path=(
   "$HOME/.cargo/bin"
   "$HOME/.krew/bin"
   "$HOME/Library/Python/3.10/bin/"
+  "$HOME/Library/pnpm"
   "$HOME/.local/bin"
   "/usr/local/opt/ruby/bin"
   "/usr/local/opt/python/libexec/bin"
