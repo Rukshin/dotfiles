@@ -1,6 +1,8 @@
 # Starship Configuration
 # Replaces Codely theme with modern, fast prompt
 
+command_timeout = 2000
+
 # Single-line format with clean design
 format = """
 $directory\
