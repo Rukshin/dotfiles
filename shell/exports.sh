@@ -39,6 +39,12 @@ export git_sim_media_dir=~/.git-sim/
 export git_sim_speed=2
 
 # ------------------------------------------------------------------------------
+# GitHub CLI — default to personal account outside work dirs
+# (chpwd in private-functions.sh overrides for work dirs)
+# ------------------------------------------------------------------------------
+export GH_HOST=github.com
+
+# ------------------------------------------------------------------------------
 # Path - The higher it is, the more priority it has
 # ------------------------------------------------------------------------------
 export path=(
@@ -56,7 +62,6 @@ export path=(
   "$HOME/Library/pnpm"
   "$HOME/.local/bin"
   "/usr/local/opt/ruby/bin"
-  "/usr/local/opt/python/libexec/bin"
   "/opt/homebrew/bin"
   "/opt/homebrew/sbin"
   "/usr/local/bin"
@@ -66,3 +71,4 @@ export path=(
   "/usr/sbin"
   "/sbin"
 )
+
