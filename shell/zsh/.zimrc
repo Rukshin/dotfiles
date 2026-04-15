@@ -1,8 +1,9 @@
 # If you modify this execute `zimfw uninstall && zimfw reinstall`
-zmodule Aloxaf/fzf-tab -u git
+# NOTE: fzf-tab must be after completion (compinit) but before syntax-highlighting/autosuggestions
 zmodule zimfw/environment -u git
 zmodule zimfw/git-info -u git
 zmodule zimfw/input -u git
 zmodule zimfw/completion -u git
+zmodule Aloxaf/fzf-tab -u git
 zmodule zsh-users/zsh-syntax-highlighting -u git
 zmodule zsh-users/zsh-autosuggestions -u git
