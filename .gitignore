@@ -1,6 +1,9 @@
 # Karabiner
 /os/mac/karabiner-elements/automatic_backups/*
 
+# Zsh completion cache (runtime-generated)
+shell/zsh/.zcompdump*
+
 # Private Stuff
 /**/**/private-*
 /scripts/private
