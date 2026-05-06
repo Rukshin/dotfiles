@@ -91,9 +91,9 @@ return {
           vim.keymap.set('n', ']d', vim.diagnostic.goto_next,
             { buffer = args.buf, desc = "Next diagnostic" })
 
-          -- Show line diagnostics
-          vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float,
-            { buffer = args.buf, desc = "Show line diagnostics" })
+          -- Show full diagnostic message in floating window
+          vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float,
+            { buffer = args.buf, desc = "Show full diagnostic" })
 
           -- Signature help
           vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help,
@@ -101,9 +101,15 @@ return {
           vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help,
             { buffer = args.buf, desc = "Signature help" })
 
-          -- Format code
+          -- Format code — prefer null-ls when available
           vim.keymap.set('n', '<leader>cf', function()
-            vim.lsp.buf.format({ async = true })
+            local has_null_ls = #vim.lsp.get_clients({ bufnr = 0, name = "null-ls" }) > 0
+            vim.lsp.buf.format({
+              async = true,
+              filter = function(client)
+                return has_null_ls and client.name == "null-ls" or not has_null_ls
+              end,
+            })
           end, { buffer = args.buf, desc = "Format code" })
         end
       })
@@ -118,18 +124,18 @@ return {
           source = "always",
           border = "rounded",
         },
-        signs = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+          },
+        },
         underline = true,
         update_in_insert = false,
         severity_sort = true,
       })
-
-      -- Customize diagnostic signs
-      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
 
       -- LSP handlers for better UI
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
@@ -204,9 +210,16 @@ return {
         },
       }
 
+      vim.lsp.config.gh_actions_ls = {
+        cmd = { 'gh-actions-language-server', '--stdio' },
+        root_markers = { '.github', '.git' },
+        filetypes = { 'yaml.github' },
+      }
+
       -- Enable LSP servers for their filetypes
       vim.lsp.enable('lua_ls')
       vim.lsp.enable('jdtls')
+      vim.lsp.enable('gh_actions_ls')
     end,
   }
 }
