@@ -56,6 +56,12 @@ desktop.ini
 *.iml
 *.sublime-workspace
 
+# nvim / Eclipse jdt.ls
+.classpath
+.project
+.settings/
+bin/
+
 
 # ClaudeAI files #
 .claude/settings.local.json
