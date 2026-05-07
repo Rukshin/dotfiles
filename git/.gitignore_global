@@ -61,6 +61,7 @@ desktop.ini
 .project
 .settings/
 bin/
+kls_database.db
 
 
 # ClaudeAI files #
