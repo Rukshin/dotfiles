@@ -1,4 +1,4 @@
-local PRIVATE_FILE = vim.fn.expand('~/.dotfiles/modules/private/nvim/gradle-checksums.lua')
+local PRIVATE_FILE = vim.fn.expand('~/Code/mine/dotfiles-private/nvim/gradle-checksums.lua')
 
 local function read_checksums()
   if vim.fn.filereadable(PRIVATE_FILE) == 0 then return {} end

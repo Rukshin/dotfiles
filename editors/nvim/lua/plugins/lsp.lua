@@ -1,5 +1,5 @@
 local function load_private_checksums()
-  local f = vim.fn.expand('~/.dotfiles/modules/private/nvim/gradle-checksums.lua')
+  local f = vim.fn.expand('~/Code/mine/dotfiles-private/nvim/gradle-checksums.lua')
   if vim.fn.filereadable(f) == 0 then return {} end
   local ok, entries = pcall(dofile, f)
   if not ok or type(entries) ~= 'table' then return {} end
