@@ -19,8 +19,11 @@ return {
 
       -- Mason-lspconfig bridge for automatic installation
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "jdtls" },
+        ensure_installed = { "lua_ls", "jdtls", "kotlin-lsp" },
         automatic_installation = true,
+        automatic_enable = {
+          exclude = { "kotlin_language_server" },
+        },
       })
 
       -- LSP keybindings and handlers
@@ -185,7 +188,22 @@ return {
       vim.lsp.config.jdtls = {
         cmd = { 'jdtls' },
         root_markers = { 'pom.xml', 'build.gradle', 'build.gradle.kts', '.git' },
-        filetypes = { 'java', 'kotlin' },
+        filetypes = { 'java' },
+        init_options = {
+          settings = {
+            java = {
+              imports = {
+                gradle = {
+                  wrapper = {
+                    checksums = {
+                      { sha256 = "497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7", allowed = true },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
         settings = {
           java = {
             signatureHelp = { enabled = true },
@@ -206,6 +224,15 @@ return {
                 staticStarThreshold = 9999,
               },
             },
+            imports = {
+              gradle = {
+                wrapper = {
+                  checksums = {
+                    { sha256 = "497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7", allowed = true },
+                  },
+                },
+              },
+            },
           },
         },
       }
@@ -219,6 +246,7 @@ return {
       -- Enable LSP servers for their filetypes
       vim.lsp.enable('lua_ls')
       vim.lsp.enable('jdtls')
+      vim.lsp.enable('kotlin_lsp')
       vim.lsp.enable('gh_actions_ls')
     end,
   }
