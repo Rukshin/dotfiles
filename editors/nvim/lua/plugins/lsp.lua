@@ -1,3 +1,11 @@
+local function load_private_checksums()
+  local f = vim.fn.expand('~/.dotfiles/modules/private/nvim/gradle-checksums.lua')
+  if vim.fn.filereadable(f) == 0 then return {} end
+  local ok, entries = pcall(dofile, f)
+  if not ok or type(entries) ~= 'table' then return {} end
+  return entries
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -185,25 +193,15 @@ return {
       }
 
       -- Java/Kotlin language server configuration using new vim.lsp.config API
+      local gradle_checksums = {}
+      for _, e in ipairs(load_private_checksums()) do
+        table.insert(gradle_checksums, { sha256 = e.sha256, allowed = true })
+      end
+
       vim.lsp.config.jdtls = {
         cmd = { 'jdtls' },
         root_markers = { 'pom.xml', 'build.gradle', 'build.gradle.kts', '.git' },
         filetypes = { 'java' },
-        init_options = {
-          settings = {
-            java = {
-              imports = {
-                gradle = {
-                  wrapper = {
-                    checksums = {
-                      { sha256 = "497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7", allowed = true },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
         settings = {
           java = {
             signatureHelp = { enabled = true },
@@ -227,9 +225,7 @@ return {
             imports = {
               gradle = {
                 wrapper = {
-                  checksums = {
-                    { sha256 = "497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7", allowed = true },
-                  },
+                  checksums = gradle_checksums,
                 },
               },
             },
