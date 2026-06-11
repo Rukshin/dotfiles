@@ -1,17 +1,17 @@
-- clean: ['~']
+---
 
+- clean: ['~']
 - defaults:
     link:
       create: true
       force: true
-
 - create:
     - ~/.hushlogin
-
 - link:
     ~/.config/karabiner.edn: os/mac/karabiner-goku/karabiner.edn
     ~/.config/karabiner: os/mac/karabiner-elements
     ~/.config/nvim: editors/nvim
+    ~/.config/opencode/plugins/memory-sync.ts: agents/opencode/plugins/memory-sync.ts
     ~/.dotly: os/mac/.dotly
     ~/bin/bash: /opt/homebrew/bin/bash
     ~/bin/date: /opt/homebrew/bin/gdate
