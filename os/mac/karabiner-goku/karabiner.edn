@@ -39,7 +39,7 @@
   :main
   [;; ------------ Hyper key ------------
 
-   {:des "Caps Lock -> Hyper (⌘⌃⌥⇧)" :rules [[:##caps_lock [:left_shift :left_command :left_control :left_option] nil {:lazy true}]]}
+   {:des "Caps Lock -> Esc (tap) / Hyper (hold)" :rules [[:##caps_lock [:left_shift :left_command :left_control :left_option] nil {:alone :escape :lazy true}]]}
 
    ;; ------------ Launchers ------------
 

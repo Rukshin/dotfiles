@@ -8,8 +8,11 @@
         "basic.to_if_held_down_threshold_milliseconds" : 500
       },
       "rules" : [ {
-        "description" : "Caps Lock -> Hyper (⌘⌃⌥⇧)",
+        "description" : "Caps Lock -> Esc (tap) / Hyper (hold)",
         "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "escape"
+          } ],
           "from" : {
             "key_code" : "caps_lock",
             "modifiers" : {
