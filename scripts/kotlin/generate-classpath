@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+# Generates classpath.txt for kotlin-language-server in the current Gradle project.
+# Requires VPN connection and a valid CodeArtifact token.
+#
+# Usage:
+#   dot kotlin generate-classpath [profile]
+#
+# Arguments:
+#   profile  CodeArtifact profile to use (default: micromt-pro)
+#
+# Example:
+#   dot kotlin generate-classpath
+#   dot kotlin generate-classpath micromt-pro
+
+set -euo pipefail
+
+PROFILE="${1:-micromt-pro}"
+PROJECT_ROOT="$(pwd)"
+CLASSPATH_FILE="$PROJECT_ROOT/classpath.txt"
+
+# Verify we are inside a Gradle project
+if [[ ! -f "$PROJECT_ROOT/build.gradle.kts" && ! -f "$PROJECT_ROOT/build.gradle" ]]; then
+  echo "Error: no build.gradle.kts or build.gradle found in $PROJECT_ROOT"
+  echo "Run this script from the root of a Gradle project."
+  exit 1
+fi
+
+echo "→ Refreshing CodeArtifact token (profile: $PROFILE)..."
+dot private fetch-codeartifact-token "$PROFILE"
+
+echo "→ Resolving Gradle dependencies..."
+# Print the full dependency tree with file paths, then extract jar/class paths
+./gradlew dependencies --configuration compileClasspath --quiet 2>/dev/null \
+  | grep -oE '/.+\.(jar|class)' \
+  | sort -u \
+  > "$CLASSPATH_FILE"
+
+# Also include testCompileClasspath to cover test imports (Spring Test, JUnit, etc.)
+./gradlew dependencies --configuration testCompileClasspath --quiet 2>/dev/null \
+  | grep -oE '/.+\.(jar|class)' \
+  | sort -u \
+  >> "$CLASSPATH_FILE"
+
+# Deduplicate
+sort -u "$CLASSPATH_FILE" -o "$CLASSPATH_FILE"
+
+COUNT=$(wc -l < "$CLASSPATH_FILE" | tr -d ' ')
+
+if [[ "$COUNT" -eq 0 ]]; then
+  echo "Error: classpath.txt is empty. Check VPN connection and CodeArtifact token."
+  rm "$CLASSPATH_FILE"
+  exit 1
+fi
+
+echo "✓ classpath.txt generated at $CLASSPATH_FILE ($COUNT entries)"
+echo ""
+echo "Restart Neovim inside this project to pick up the new classpath."
