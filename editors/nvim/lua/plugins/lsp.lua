@@ -30,7 +30,7 @@ return {
         ensure_installed = { "lua_ls", "jdtls", "kotlin-lsp" },
         automatic_installation = true,
         automatic_enable = {
-          exclude = { "kotlin_language_server" },
+          exclude = { "kotlin_lsp", "kotlin_language_server" },
         },
       })
 
@@ -237,6 +237,13 @@ return {
         cmd = { 'gh-actions-language-server', '--stdio' },
         root_markers = { '.github', '.git' },
         filetypes = { 'yaml.github' },
+      }
+
+      -- Kotlin language server configuration (JetBrains kotlin-lsp)
+      vim.lsp.config.kotlin_lsp = {
+        cmd = { 'kotlin-lsp', '--stdio' },
+        root_markers = { 'build.gradle.kts', 'build.gradle', 'settings.gradle.kts', 'pom.xml', '.git' },
+        filetypes = { 'kotlin' },
       }
 
       -- Enable LSP servers for their filetypes
