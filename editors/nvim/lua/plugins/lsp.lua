@@ -246,34 +246,10 @@ return {
         filetypes = { 'kotlin' },
       }
 
-      -- kotlin-language-server as code-action sidecar only
-      -- kotlin_lsp does not advertise codeActionProvider yet (v0.1)
-      -- this server handles only code actions; all other capabilities are disabled to avoid conflicts
-      vim.lsp.config.kotlin_language_server = {
-        cmd = { 'kotlin-language-server' },
-        root_markers = { 'build.gradle.kts', 'build.gradle', 'settings.gradle.kts', 'pom.xml', '.git' },
-        filetypes = { 'kotlin' },
-        on_init = function(client)
-          client.server_capabilities.hoverProvider = false
-          client.server_capabilities.completionProvider = nil
-          client.server_capabilities.referencesProvider = false
-          client.server_capabilities.definitionProvider = false
-          client.server_capabilities.typeDefinitionProvider = false
-          client.server_capabilities.implementationProvider = false
-          client.server_capabilities.semanticTokensProvider = nil
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.renameProvider = false
-          client.server_capabilities.signatureHelpProvider = nil
-          client.server_capabilities.documentSymbolProvider = false
-          client.server_capabilities.workspaceSymbolProvider = false
-        end,
-      }
-
       -- Enable LSP servers for their filetypes
       vim.lsp.enable('lua_ls')
       vim.lsp.enable('jdtls')
       vim.lsp.enable('kotlin_lsp')
-      vim.lsp.enable('kotlin_language_server')
       vim.lsp.enable('gh_actions_ls')
     end,
   }
