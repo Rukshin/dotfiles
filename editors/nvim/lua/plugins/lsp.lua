@@ -27,7 +27,7 @@ return {
 
       -- Mason-lspconfig bridge for automatic installation
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "jdtls", "kotlin-lsp" },
+        ensure_installed = { "lua_ls", "jdtls", "kotlin_lsp" },
         automatic_installation = true,
         automatic_enable = {
           exclude = { "kotlin_lsp", "kotlin_language_server" },
