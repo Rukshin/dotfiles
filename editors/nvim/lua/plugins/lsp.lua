@@ -244,6 +244,10 @@ return {
         cmd = { 'kotlin-lsp', '--stdio' },
         root_markers = { 'build.gradle.kts', 'build.gradle', 'settings.gradle.kts', 'pom.xml', '.git' },
         filetypes = { 'kotlin' },
+        on_init = function(client)
+          -- kotlin-lsp may have code actions implemented but not advertised yet
+          client.server_capabilities.codeActionProvider = true
+        end,
       }
 
       -- Enable LSP servers for their filetypes
