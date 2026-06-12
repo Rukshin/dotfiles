@@ -11,6 +11,9 @@ vim.opt.swapfile = false
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
+-- Exit Insert mode without reaching for Esc
+vim.keymap.set('i', 'jk', '<Esc>')
+
 vim.filetype.add({
   pattern = {
     [".*/%.github/workflows/.*%.ya?ml"] = "yaml.github",
