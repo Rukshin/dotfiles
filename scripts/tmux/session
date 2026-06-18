@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Usage: dot tmux session <name>
+# Creates a named tmux session if it doesn't exist, then attaches to it.
+# Ideal for persistent per-project sessions: dot tmux session pkm, dot tmux session <service>
+
+SESSION_NAME="${1:-main}"
+
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+  tmux attach-session -t "$SESSION_NAME"
+else
+  tmux new-session -s "$SESSION_NAME"
+fi
