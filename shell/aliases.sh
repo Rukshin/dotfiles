@@ -33,3 +33,8 @@ alias c.='(code $PWD &>/dev/null &)'
 alias o.='open .'
 alias up='dot package update_all'
 alias removecontainers='dot docker remove_containers'
+
+# Tmux
+alias t='dot tmux session'
+alias tl='tmux ls'
+alias tk='tmux kill-session -t'

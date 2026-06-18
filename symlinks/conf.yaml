@@ -22,3 +22,4 @@
     ~/.gitattributes: git/.gitattributes
     ~/.gitignore_global: git/.gitignore_global
     ~/.yamlfmt: langs/yaml/.yamlfmt
+    ~/.tmux.conf: shell/tmux/tmux.conf
